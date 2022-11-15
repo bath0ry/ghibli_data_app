@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:project_api/ghibli_model.dart';
+import 'package:project_api/src/data/ghibli_model.dart';
 
 class GhibliService {
   GhibliService(this.dio);

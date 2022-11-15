@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_api/ghibli_model.dart';
-import 'package:project_api/ghibli_service.dart';
-import 'package:project_api/movies_state.dart';
+import 'package:project_api/src/data/ghibli_model.dart';
+import 'package:project_api/src/data/ghibli_service.dart';
+import 'package:project_api/src/data/movies_state.dart';
 
 class MoviesCubit extends Cubit<MoviesState> {
   MoviesCubit({required this.service}) : super(InitialState()) {

@@ -22,7 +22,7 @@ class MovieListWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40, bottom: 5),
                 child: Center(
                   child: Text(
-                    'Title: ${data[index].title}',
+                    '${data[index].title}',
                     style: const TextStyle(
                         color: Color.fromARGB(255, 201, 240, 165),
                         fontSize: 28,
@@ -34,7 +34,7 @@ class MovieListWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 3, bottom: 10),
                 child: Center(
                   child: Text(
-                    'Original Title: ${data[index].originalTitle}',
+                    '${data[index].originalTitle}',
                     style: const TextStyle(
                         color: Color.fromARGB(255, 228, 176, 176),
                         fontSize: 25,

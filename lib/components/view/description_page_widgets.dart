@@ -29,7 +29,7 @@ class DescriptionPageWidgets extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 100, bottom: 20),
                 child: Center(
                   child: Text(
-                    'Title: ${titleMovie}',
+                    '${titleMovie}',
                     style: const TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 28,

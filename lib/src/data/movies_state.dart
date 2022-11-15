@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:project_api/ghibli_model.dart';
+import 'package:project_api/src/data/ghibli_model.dart';
 
 abstract class MoviesState extends Equatable {}
 

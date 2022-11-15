@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:project_api/ghibli_service.dart';
-import 'package:project_api/home_page.dart';
-import 'package:project_api/movies_cubit.dart';
+import 'package:project_api/src/data/ghibli_service.dart';
+import 'package:project_api/home/page/view/home_page.dart';
+import 'package:project_api/src/data/movies_cubit.dart';
 
 void main() {
   runApp(const MyApp());
