@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:project_api/holiday_model.dart';
-import 'package:project_api/holiday_service.dart';
+import 'package:project_api/ghibli_model.dart';
+import 'package:project_api/ghibli_service.dart';
 
 class DescriptionPage extends StatelessWidget {
   final String titleMovie;

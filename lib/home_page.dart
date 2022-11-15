@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:project_api/holiday_model.dart';
-import 'package:project_api/holiday_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_api/ghibli_model.dart';
+import 'package:project_api/ghibli_service.dart';
 import 'package:project_api/description_page.dart';
+import 'package:project_api/movies_cubit.dart';
+import 'package:project_api/movies_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,10 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final GhibliService service;
   @override
   void initState() {
-    service = GhibliService(Dio());
     super.initState();
   }
 
@@ -39,36 +40,19 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          FutureBuilder(
-              initialData: GhibliModel(
-                id: '',
-                title: '',
-                originalTitle: '',
-                image: '',
-                description: '',
-                director: '',
-                producer: '',
-                releaseDate: '',
-                url: '',
-                movieBanner: '',
-              ),
-              future: service.getGhibli(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return const Center(
-                    child: Text("Erro"),
-                  );
-                } else if (snapshot.connectionState == ConnectionState.done) {
-                  final data = snapshot.data as List<GhibliModel>;
-                  return movieList(data);
-                } else {
-                  return const Center(
-                    child: Text('Error'),
-                  );
-                }
-              }),
+          BlocBuilder<MoviesCubit, MoviesState>(builder: ((context, state) {
+            if (state is LoadingState) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is ErrorState) {
+              return const Center(child: Text('Erro ao pegar dados'));
+            } else if (state is LoadedState) {
+              return movieList(state.data);
+            } else {
+              return const Center(
+                child: Text('Error'),
+              );
+            }
+          })),
         ],
       ),
     );

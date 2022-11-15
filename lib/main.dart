@@ -1,5 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_api/ghibli_service.dart';
 import 'package:project_api/home_page.dart';
+import 'package:project_api/movies_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +20,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SafeArea(child: const HomePage()),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<MoviesCubit>(
+              create: (BuildContext context) =>
+                  MoviesCubit(service: GhibliService(Dio())))
+        ],
+        child: SafeArea(child: HomePage()),
+      ),
     );
   }
 }
