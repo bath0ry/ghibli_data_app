@@ -1,25 +1,22 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:project_api/ghibli_model.dart';
-import 'package:project_api/ghibli_service.dart';
 
-class DescriptionPage extends StatelessWidget {
+class DescriptionPageWidgets extends StatelessWidget {
+  const DescriptionPageWidgets({
+    Key? key,
+    required this.titleMovie,
+    required this.movieImage,
+    required this.descriptionMovie,
+    required this.directorMovie,
+    required this.producerMovie,
+    required this.releaseDateMovie,
+  }) : super(key: key);
+
   final String titleMovie;
   final String movieImage;
   final String descriptionMovie;
   final String directorMovie;
   final String producerMovie;
   final String releaseDateMovie;
-  const DescriptionPage(
-      {super.key,
-      required this.titleMovie,
-      required this.movieImage,
-      required this.descriptionMovie,
-      required this.directorMovie,
-      required this.producerMovie,
-      required this.releaseDateMovie});
 
   @override
   Widget build(BuildContext context) {
