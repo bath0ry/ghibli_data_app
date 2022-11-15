@@ -22,23 +22,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 218, 203, 198),
+      backgroundColor: Colors.black,
       body: Column(
         children: [
+          Image.asset(
+            'assets/images/imagem_2022-11-15_011646334-removebg-preview.png',
+            color: const Color.fromARGB(255, 206, 206, 206),
+          ),
           FittedBox(
             child: Container(
-              child: Center(
-                  child: Text(
-                'Studio Ghibli Data Base',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50,
-                    fontWeight: FontWeight.w600,
-                    fontStyle: FontStyle.italic),
-              )),
-              color: Color.fromARGB(255, 0, 0, 0),
-              width: 600,
-              height: 250,
+              width: 800,
+              height: 330,
+              color: Colors.black,
+              child: Image.asset(
+                'assets/images/imagem_2022-11-15_002834448-removebg-preview.png',
+              ),
             ),
           ),
           FutureBuilder(
@@ -63,7 +61,7 @@ class _HomePageState extends State<HomePage> {
               future: service.getGhibli(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: const CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return const Center(
                     child: Text("Erro"),
@@ -71,22 +69,57 @@ class _HomePageState extends State<HomePage> {
                 } else if (snapshot.connectionState == ConnectionState.done) {
                   final data = snapshot.data as List<GhibliModel>;
                   return Expanded(
-                    child: ListView(
-                      children: [
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyWidget()));
-                            },
-                            child: Image.network(data[0].image)),
-                        Image.network(data[1].image)
-                      ],
+                    child: ListView.builder(
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 40, bottom: 20),
+                              child: Center(
+                                child: Text(
+                                  'Title: ${data[index].title}',
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 201, 240, 165),
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 3, bottom: 10),
+                              child: Center(
+                                child: Text(
+                                  'Original Title: ${data[index].originalTitle}',
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 228, 176, 176),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const MyWidget()));
+                                },
+                                child: Image.network(
+                                  data[index].image,
+                                  scale: 1.5,
+                                  height: 350,
+                                )),
+                          ],
+                        );
+                      },
                     ),
                   );
                 } else {
-                  return Container(
+                  return const Center(
                     child: Text('Error'),
                   );
                 }
