@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_api/components/view/movie_list_widget.dart';
+import 'package:project_api/src/data/ghibli_model.dart';
+import 'package:project_api/src/data/ghibli_service.dart';
 
 import 'package:project_api/src/data/movies_cubit.dart';
 import 'package:project_api/src/data/movies_state.dart';
@@ -38,6 +40,14 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: CustomSearchDelegate());
+              },
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              )),
           BlocBuilder<MoviesCubit, MoviesState>(builder: ((context, state) {
             if (state is LoadingState) {
               return const Center(child: CircularProgressIndicator());
@@ -53,6 +63,67 @@ class _HomePageState extends State<HomePage> {
           })),
         ],
       ),
+    );
+  }
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  List<GhibliModel> data = [];
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          close(context, null);
+        },
+        icon: Icon(Icons.arrow_back));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var movie in data) {
+      if (movie.title.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(movie.title);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: ((context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      }),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var movie in data) {
+      if (movie.title.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(movie.title);
+      }
+    }
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: ((context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      }),
     );
   }
 }
