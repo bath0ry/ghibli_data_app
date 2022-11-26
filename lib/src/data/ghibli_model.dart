@@ -2,7 +2,6 @@
 //
 //     final ghibliModel = ghibliModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<GhibliModel> ghibliModelFromJson(String str) => List<GhibliModel>.from(

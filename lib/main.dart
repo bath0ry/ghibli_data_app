@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) =>
                   MoviesCubit(service: GhibliService(Dio())))
         ],
-        child: SafeArea(child: HomePage()),
+        child: const SafeArea(child: HomePage()),
       ),
     );
   }
