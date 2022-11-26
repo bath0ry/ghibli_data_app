@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_api/components/view/movie_list_widget.dart';
 import 'package:project_api/src/data/ghibli_model.dart';
-import 'package:project_api/src/data/ghibli_service.dart';
 
 import 'package:project_api/src/data/movies_cubit.dart';
 import 'package:project_api/src/data/movies_state.dart';

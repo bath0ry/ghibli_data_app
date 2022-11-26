@@ -50,7 +50,7 @@ class MovieListWidget extends StatelessWidget {
                             builder: (context) => DescriptionPage(
                                   descriptionMovie: data[index].description,
                                   directorMovie: data[index].director,
-                                  movieImage: data[index].movieBanner,
+                                  movieImage: data[index].image,
                                   producerMovie: data[index].producer,
                                   releaseDateMovie: data[index].releaseDate,
                                   titleMovie: data[index].title,

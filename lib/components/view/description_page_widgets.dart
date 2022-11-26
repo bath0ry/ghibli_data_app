@@ -46,8 +46,7 @@ class DescriptionPageWidgets extends StatelessWidget {
               ),
               Image.network(
                 movieImage,
-                scale: 1,
-                height: 220,
+                height: 350,
               ),
               SizedBox(
                 height: 30,
