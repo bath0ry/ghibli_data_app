@@ -22,22 +22,10 @@ class MovieListWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40, bottom: 5),
                 child: Center(
                   child: Text(
-                    '${data[index].title}',
+                    data[index].title,
                     style: const TextStyle(
                         color: Color.fromARGB(255, 201, 240, 165),
                         fontSize: 28,
-                        fontWeight: FontWeight.w900),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 3, bottom: 10),
-                child: Center(
-                  child: Text(
-                    '${data[index].originalTitle}',
-                    style: const TextStyle(
-                        color: Color.fromARGB(255, 228, 176, 176),
-                        fontSize: 25,
                         fontWeight: FontWeight.w900),
                   ),
                 ),
@@ -48,27 +36,27 @@ class MovieListWidget extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => DescriptionPage(
-                                  descriptionMovie: data[index].description,
+                                  descriptionMovie: data[index].title,
                                   directorMovie: data[index].director,
-                                  movieImage: data[index].image,
-                                  producerMovie: data[index].producer,
-                                  releaseDateMovie: data[index].releaseDate,
+                                  movieImage: data[index].poster,
+                                  producerMovie: data[index].producers,
+                                  releaseDateMovie: data[index].release,
                                   titleMovie: data[index].title,
                                 )));
                   },
                   child: Image.network(
-                    data[index].image,
+                    data[index].poster,
                     scale: 1,
                     height: 400,
                   )),
-              Divider(
+              const Divider(
                 height: 50,
                 color: Color.fromARGB(255, 255, 255, 255),
                 thickness: 2,
                 indent: 40,
                 endIndent: 40,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],

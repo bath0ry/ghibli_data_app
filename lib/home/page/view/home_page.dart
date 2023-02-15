@@ -40,10 +40,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           IconButton(
-              onPressed: () {
-                showSearch(context: context, delegate: CustomSearchDelegate());
-              },
-              icon: Icon(
+              onPressed: () {},
+              icon: const Icon(
                 Icons.search,
                 color: Colors.white,
               )),
@@ -53,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             } else if (state is ErrorState) {
               return const Center(child: Text('Erro ao pegar dados'));
             } else if (state is LoadedState) {
-              return MovieListWidget(data: state.data);
+              return MovieListWidget(data: state.movies);
             } else {
               return const Center(
                 child: Text('Error'),
@@ -62,67 +60,6 @@ class _HomePageState extends State<HomePage> {
           })),
         ],
       ),
-    );
-  }
-}
-
-class CustomSearchDelegate extends SearchDelegate {
-  List<GhibliModel> data = [];
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-          onPressed: () {
-            query = '';
-          },
-          icon: Icon(Icons.clear))
-    ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-        onPressed: () {
-          close(context, null);
-        },
-        icon: Icon(Icons.arrow_back));
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var movie in data) {
-      if (movie.title.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(movie.title);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: ((context, index) {
-        var result = matchQuery[index];
-        return ListTile(
-          title: Text(result),
-        );
-      }),
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var movie in data) {
-      if (movie.title.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(movie.title);
-      }
-    }
-    return ListView.builder(
-      itemCount: matchQuery.length,
-      itemBuilder: ((context, index) {
-        var result = matchQuery[index];
-        return ListTile(
-          title: Text(result),
-        );
-      }),
     );
   }
 }

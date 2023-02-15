@@ -6,7 +6,7 @@ class GhibliService {
   final Dio dio;
 
   Future<List<GhibliModel>> getGhibli() async {
-    const url = "https://ghibliapi.herokuapp.com/films/";
+    const url = "https://studio-ghibli-films-api.herokuapp.com/api";
 
     try {
       final response = await dio.get(url);

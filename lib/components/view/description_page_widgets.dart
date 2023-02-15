@@ -21,7 +21,7 @@ class DescriptionPageWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 179, 179, 179),
+        backgroundColor: const Color.fromARGB(255, 179, 179, 179),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -29,7 +29,7 @@ class DescriptionPageWidgets extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 100, bottom: 20),
                 child: Center(
                   child: Text(
-                    '${titleMovie}',
+                    titleMovie,
                     style: const TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 28,
@@ -37,7 +37,7 @@ class DescriptionPageWidgets extends StatelessWidget {
                   ),
                 ),
               ),
-              Divider(
+              const Divider(
                 height: 50,
                 color: Color.fromARGB(255, 0, 0, 0),
                 thickness: 2,
@@ -48,17 +48,17 @@ class DescriptionPageWidgets extends StatelessWidget {
                 movieImage,
                 height: 350,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Divider(
+              const Divider(
                 height: 50,
                 color: Color.fromARGB(255, 0, 0, 0),
                 thickness: 2,
                 indent: 40,
                 endIndent: 40,
               ),
-              Text(
+              const Text(
                 'Description:',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
               ),
@@ -75,65 +75,65 @@ class DescriptionPageWidgets extends StatelessWidget {
                   ),
                 ),
               ),
-              Divider(
+              const Divider(
                 height: 50,
                 color: Color.fromARGB(255, 0, 0, 0),
                 thickness: 2,
                 indent: 40,
                 endIndent: 40,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.movie),
+                    const Icon(Icons.movie),
                     Text(
-                      'Director: ${directorMovie}',
+                      'Director: $directorMovie',
                       textAlign: TextAlign.start,
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.movie_filter),
+                    const Icon(Icons.movie_filter),
                     Text(
-                      'Producer: ${producerMovie}',
+                      'Producer: $producerMovie',
                       textAlign: TextAlign.start,
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: Row(
                   children: [
-                    Icon(Icons.theaters),
+                    const Icon(Icons.theaters),
                     Text(
-                      'Release: ${releaseDateMovie}',
+                      'Release: $releaseDateMovie',
                       textAlign: TextAlign.start,
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],

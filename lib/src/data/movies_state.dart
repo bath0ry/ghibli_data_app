@@ -14,12 +14,12 @@ class LoadingState extends MoviesState {
 }
 
 class LoadedState extends MoviesState {
-  LoadedState(this.data);
+  LoadedState(this.movies);
 
-  final List<GhibliModel> data;
+  final List<GhibliModel> movies;
 
   @override
-  List<Object> get props => [data];
+  List<Object> get props => [movies];
 }
 
 class ErrorState extends MoviesState {
