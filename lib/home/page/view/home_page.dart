@@ -7,7 +7,9 @@ import 'package:project_api/src/data/movies_cubit.dart';
 import 'package:project_api/src/data/movies_state.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -51,7 +53,9 @@ class _HomePageState extends State<HomePage> {
             } else if (state is ErrorState) {
               return const Center(child: Text('Erro ao pegar dados'));
             } else if (state is LoadedState) {
-              return MovieListWidget(data: state.movies);
+              return MovieListWidget(
+                data: [],
+              );
             } else {
               return const Center(
                 child: Text('Error'),

@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<MoviesCubit>(
               create: (BuildContext context) =>
-                  MoviesCubit(service: GhibliService(Dio())))
+                  MoviesCubit(service: GhibliService()))
         ],
-        child: const SafeArea(child: HomePage()),
+        child: SafeArea(child: HomePage()),
       ),
     );
   }

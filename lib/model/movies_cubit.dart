@@ -12,7 +12,7 @@ class MoviesCubit extends Cubit<MoviesState> {
   void getGhibliMovies() async {
     try {
       emit(LoadingState());
-      List<GhibliModel> data = await service.getGhibli();
+      String data = await service.getGhibli();
       emit(LoadedState(data));
     } catch (e) {
       emit(ErrorState());

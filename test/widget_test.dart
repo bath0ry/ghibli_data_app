@@ -22,11 +22,14 @@ void main() {
       home: MultiBlocProvider(providers: [
         BlocProvider<MoviesCubit>(
             create: (BuildContext context) =>
-                MoviesCubit(service: GhibliService(Dio())))
+                MoviesCubit(service: GhibliService()))
       ], child: SafeArea(child: HomePage())),
     ));
 
     // Verify that our counter starts at 0.
-    expect(find.byType(Image), findsOneWidget);
+    expect(
+        find.byWidget(Image.asset(
+            'assets/images/imagem_2022-11-15_011646334-removebg-preview.png')),
+        findsWidgets);
   });
 }
